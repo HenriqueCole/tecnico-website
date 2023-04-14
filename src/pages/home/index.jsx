@@ -1,5 +1,19 @@
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
+
+//Icons
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+import RestoreIcon from "@mui/icons-material/Restore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import ScienceIcon from '@mui/icons-material/Science';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+
 //Header
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -7,8 +21,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
+
 
 //Sidebar
 import Drawer from "@mui/material/Drawer";
@@ -16,10 +29,8 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+
 
 //Account profile
 import Avatar from "@mui/material/Avatar";
@@ -33,9 +44,7 @@ import Logout from "@mui/icons-material/Logout";
 //Navigation
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+
 
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
@@ -297,9 +306,10 @@ export default function Home() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Suplementos" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Fovoritos" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Meu Carrinho" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="Suplementos" icon={<ScienceIcon />} />
+        <BottomNavigationAction label="Acessórios" icon={<FitnessCenterIcon />} />
+        <BottomNavigationAction label="Meu Carrinho" icon={<ShoppingCartIcon />} />
+        
       </BottomNavigation>
       {/* Sidebar */}
       {["left", "right", "top", "bottom"].map((anchor) => (
