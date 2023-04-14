@@ -298,8 +298,8 @@ export default function Home() {
         }}
       >
         <BottomNavigationAction label="Suplementos" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="Fovoritos" icon={<FavoriteIcon />} />
+        <BottomNavigationAction label="Meu Carrinho" icon={<LocationOnIcon />} />
       </BottomNavigation>
       {/* Sidebar */}
       {["left", "right", "top", "bottom"].map((anchor) => (
