@@ -12,7 +12,6 @@ import SearchIcon from "@mui/icons-material/Search";
 
 //Sidebar
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
@@ -31,9 +30,25 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 
+//Navigation
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import RestoreIcon from "@mui/icons-material/Restore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+
 import "./styles.css";
 
 export default function Home() {
+  const handleDragStart = (e) => e.preventDefault();
+  const items = [
+    <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
+    <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
+    <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
+  ];
   //Header
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -98,7 +113,9 @@ export default function Home() {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      sx={{
+        width: anchor === "top" || anchor === "bottom" ? "auto" : 250,
+      }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -140,11 +157,23 @@ export default function Home() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  //Navigation
+  const [value, setValue] = React.useState("recents");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   return (
     <div>
       {/* Header */}
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar
+          position="static"
+          sx={{
+            backgroundColor: "#A9423F",
+          }}
+        >
           <Toolbar>
             <IconButton
               size="large"
@@ -260,6 +289,18 @@ export default function Home() {
           </Toolbar>
         </AppBar>
       </Box>
+      {/* Navigation */}
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      >
+        <BottomNavigationAction label="Suplementos" icon={<RestoreIcon />} />
+        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+      </BottomNavigation>
       {/* Sidebar */}
       {["left", "right", "top", "bottom"].map((anchor) => (
         <React.Fragment key={anchor}>
@@ -272,6 +313,7 @@ export default function Home() {
           </Drawer>
         </React.Fragment>
       ))}
+      <AliceCarousel mouseTracking items={items} />
     </div>
   );
 }
