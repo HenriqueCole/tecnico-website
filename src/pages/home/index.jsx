@@ -44,11 +44,13 @@ import "./styles.css";
 
 export default function Home() {
   const handleDragStart = (e) => e.preventDefault();
+
   const items = [
     <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
     <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
     <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
   ];
+
   //Header
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -121,7 +123,7 @@ export default function Home() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        {["Suplementos", "Acessórios"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -134,11 +136,11 @@ export default function Home() {
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
+        {["Logout"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <Logout />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
