@@ -2,7 +2,7 @@ import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 
 //Icons
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -11,8 +11,8 @@ import MailIcon from "@mui/icons-material/Mail";
 import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import ScienceIcon from '@mui/icons-material/Science';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import ScienceIcon from "@mui/icons-material/Science";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 
 //Header
 import AppBar from "@mui/material/AppBar";
@@ -22,7 +22,6 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 
-
 //Sidebar
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -30,7 +29,6 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-
 
 //Account profile
 import Avatar from "@mui/material/Avatar";
@@ -44,7 +42,6 @@ import Logout from "@mui/icons-material/Logout";
 //Navigation
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-
 
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
@@ -136,7 +133,7 @@ export default function Home() {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index % 2 === 0 ? <ScienceIcon /> : <FitnessCenterIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -309,9 +306,14 @@ export default function Home() {
         }}
       >
         <BottomNavigationAction label="Suplementos" icon={<ScienceIcon />} />
-        <BottomNavigationAction label="Acessórios" icon={<FitnessCenterIcon />} />
-        <BottomNavigationAction label="Meu Carrinho" icon={<ShoppingCartIcon />} />
-        
+        <BottomNavigationAction
+          label="Acessórios"
+          icon={<FitnessCenterIcon />}
+        />
+        <BottomNavigationAction
+          label="Meu Carrinho"
+          icon={<ShoppingCartIcon />}
+        />
       </BottomNavigation>
       {/* Sidebar */}
       {["left", "right", "top", "bottom"].map((anchor) => (
