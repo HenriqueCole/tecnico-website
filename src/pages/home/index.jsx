@@ -1,6 +1,8 @@
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 
+import { Link } from "react-router-dom";
+
 //Icons
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -45,6 +47,9 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 
 import Suplementos from "./components/suplementos";
 import Acessorios from "./components/acessorios";
+
+import bgImg from "../../assets/fundo.png";
+import product from "../../assets/product.png";
 
 import { useState } from "react";
 
@@ -154,15 +159,64 @@ export default function Home() {
       <List>
         {["Logout"].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <Logout />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
+            <Link to="/login">
+              <ListItemButton>
+                <ListItemIcon>
+                  <Logout />
+                </ListItemIcon>
+                <ListItemText
+                  primary={text}
+                  sx={{
+                    color: "red",
+                    textDecoration: "none",
+                  }}
+                />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
+    </Box>
+  );
+
+  const listCart = (anchor) => (
+    <Box
+      sx={{
+        width: "25rem",
+      }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <div className="title-cart">
+        <h1>Seu Carrinho</h1>
+      </div>
+      <Divider />
+      <div className="cart">
+        <div className="cart-item">
+          <div className="cart-item-img">
+            <img src={product} alt="product" />
+          </div>
+          <div className="cart-item-info">
+            <h1>Suplemento 1</h1>
+            <p>Descrição do suplemento 1</p>
+            <p>R$ 100,00</p>
+          </div>
+        </div>
+        <div className="cart-item">
+          <div className="cart-item-img">
+            <img src={product} alt="product" />
+          </div>
+          <div className="cart-item-info">
+            <h1>Suplemento 2</h1>
+            <p>Descrição do suplemento 2</p>
+            <p>R$ 100,00</p>
+          </div>
+        </div>
+        <div className="container-button-buy">
+          <button className="button-buy">Finalizar compra</button>
+        </div>
+      </div>
     </Box>
   );
 
@@ -297,12 +351,19 @@ export default function Home() {
                 </ListItemIcon>
                 Settings
               </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-                Logout
-              </MenuItem>
+              <Link to="/login">
+                <MenuItem
+                  onClick={handleClose}
+                  sx={{
+                    color: "#A9423F",
+                  }}
+                >
+                  <ListItemIcon>
+                    <Logout fontSize="small" />
+                  </ListItemIcon>
+                  Logout
+                </MenuItem>
+              </Link>
             </Menu>
           </Toolbar>
         </AppBar>
@@ -334,10 +395,14 @@ export default function Home() {
         <BottomNavigationAction
           label="Meu Carrinho"
           icon={<ShoppingCartIcon />}
+          onClick={toggleDrawer("right", true)}
         />
       </BottomNavigation>
+      <div className="container-img">
+        <img src={bgImg} alt="" />
+      </div>
       {/* Sidebar */}
-      {["left", "right", "top", "bottom"].map((anchor) => (
+      {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Drawer
             anchor={anchor}
@@ -345,6 +410,17 @@ export default function Home() {
             onClose={toggleDrawer(anchor, false)}
           >
             {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
+      {["right"].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <Drawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+          >
+            {listCart(anchor)}
           </Drawer>
         </React.Fragment>
       ))}
