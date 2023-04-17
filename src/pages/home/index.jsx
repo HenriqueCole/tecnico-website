@@ -43,20 +43,16 @@ import Logout from "@mui/icons-material/Logout";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 
-import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
+import Suplementos from "./components/suplementos";
+import Acessorios from "./components/acessorios";
+
+import { useState } from "react";
 
 import "./styles.css";
 
 export default function Home() {
-  const handleDragStart = (e) => e.preventDefault();
-
-  const items = [
-    <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-    <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-    <img src="path-to-img" onDragStart={handleDragStart} role="presentation" />,
-  ];
-
+  const [supPage, setSupPage] = useState(true);
+  const [acePage, setAcePage] = useState(false);
   //Header
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -133,7 +129,21 @@ export default function Home() {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index % 2 === 0 ? <ScienceIcon /> : <FitnessCenterIcon />}
+                {index % 2 === 0 ? (
+                  <ScienceIcon
+                    onClick={() => {
+                      setSupPage(true);
+                      setAcePage(false);
+                    }}
+                  />
+                ) : (
+                  <FitnessCenterIcon
+                    onClick={() => {
+                      setSupPage(false);
+                      setAcePage(true);
+                    }}
+                  />
+                )}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -305,10 +315,21 @@ export default function Home() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Suplementos" icon={<ScienceIcon />} />
+        <BottomNavigationAction
+          label="Suplementos"
+          icon={<ScienceIcon />}
+          onClick={() => {
+            setSupPage(true);
+            setAcePage(false);
+          }}
+        />
         <BottomNavigationAction
           label="Acessórios"
           icon={<FitnessCenterIcon />}
+          onClick={() => {
+            setAcePage(true);
+            setSupPage(false);
+          }}
         />
         <BottomNavigationAction
           label="Meu Carrinho"
@@ -327,7 +348,7 @@ export default function Home() {
           </Drawer>
         </React.Fragment>
       ))}
-      <AliceCarousel mouseTracking items={items} />
+      {supPage ? <Suplementos /> : <Acessorios />}
     </div>
   );
 }

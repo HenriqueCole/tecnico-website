@@ -27,30 +27,3 @@
 .imgProduct:hover {
   transform: scale(1.1);
 }
-
-.container-trending {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem;
-}
-
-.container-trending h1 {
-  color: #a9423f;
-  border-bottom: #a9423f solid 3px;
-}
-
-.container-title {
-  display: grid;
-  align-items: center;
-  justify-content: start;
-  margin: 2rem;
-}
-
-.container-title h1 {
-  color: #a9423f;
-}
-
-.container-carousels {
-  margin: 5rem;
-}
