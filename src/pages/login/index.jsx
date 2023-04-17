@@ -126,6 +126,20 @@ export default function Login() {
                 >
                   Entrar
                 </Button>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{
+                    mt: 3,
+                    mb: 20,
+                    color: "#A9423F",
+                    backgroundColor: "transparent",
+                    "&:hover": { backgroundColor: "transparent" },
+                  }}
+                >
+                  Continuar sem cadastro
+                </Button>
               </Link>
               <Grid container>
                 <Grid item xs>
