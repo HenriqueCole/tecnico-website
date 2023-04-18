@@ -2,6 +2,17 @@ import "./styles.css";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import ProductImg from "../../../../assets/product.png";
+import p1Img from "../../../../assets/proteína_1.png";
+import p2Img from "../../../../assets/proteína_2.png";
+import p3Img from "../../../../assets/proteína_3.png";
+import p4Img from "../../../../assets/proteína_4.png";
+import p5Img from "../../../../assets/proteína_5.png";
+import bpImg from "../../../../assets/barra_proteína.png";
+import s1Img from "../../../../assets/suplemento_1.png";
+import s2Img from "../../../../assets/suplemento_2.png";
+import v1Img from "../../../../assets/vitamina_1.png";
+import v2Img from "../../../../assets/vitamina_2.png";
+import v3Img from "../../../../assets/vitamina_3.png";
 
 export default function Carousel() {
   const handleDragStart = (e) => e.preventDefault();
@@ -21,43 +32,43 @@ export default function Carousel() {
     />,
     <img
       className="imgProduct"
-      src={ProductImg}
+      src={p1Img}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={ProductImg}
+      src={p2Img}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={ProductImg}
+      src={p3Img}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={ProductImg}
+      src={p4Img}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={ProductImg}
+      src={p5Img}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={ProductImg}
+      src={bpImg}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={ProductImg}
+      src={s1Img}
       onDragStart={handleDragStart}
       role="presentation"
     />,
