@@ -14,7 +14,7 @@ import v1Img from "../../../../assets/vitamina_1.png";
 import v2Img from "../../../../assets/vitamina_2.png";
 import v3Img from "../../../../assets/vitamina_3.png";
 
-export default function Carousel() {
+export default function Carousel(props) {
   const handleDragStart = (e) => e.preventDefault();
 
   const responsive = {
@@ -23,7 +23,58 @@ export default function Carousel() {
     1024: { items: 3 },
   };
 
-  const items = [
+  const itemsSuplementos = [
+    <img
+      className="imgProduct"
+      src={ProductImg}
+      onDragStart={handleDragStart}
+      role="presentation"
+    />,
+    <img
+      className="imgProduct"
+      src={p1Img}
+      onDragStart={handleDragStart}
+      role="presentation"
+    />,
+    <img
+      className="imgProduct"
+      src={p2Img}
+      onDragStart={handleDragStart}
+      role="presentation"
+    />,
+    <img
+      className="imgProduct"
+      src={p3Img}
+      onDragStart={handleDragStart}
+      role="presentation"
+    />,
+    <img
+      className="imgProduct"
+      src={p4Img}
+      onDragStart={handleDragStart}
+      role="presentation"
+    />,
+    <img
+      className="imgProduct"
+      src={p5Img}
+      onDragStart={handleDragStart}
+      role="presentation"
+    />,
+    <img
+      className="imgProduct"
+      src={bpImg}
+      onDragStart={handleDragStart}
+      role="presentation"
+    />,
+    <img
+      className="imgProduct"
+      src={s1Img}
+      onDragStart={handleDragStart}
+      role="presentation"
+    />,
+  ];
+
+  const itemsAcessorios = [
     <img
       className="imgProduct"
       src={ProductImg}
@@ -77,7 +128,13 @@ export default function Carousel() {
   const Carousel = () => (
     <AliceCarousel
       mouseTracking
-      items={items}
+      items={
+        props.page == "suplementos"
+          ? itemsSuplementos
+          : props.page == "acessorios"
+          ? itemsAcessorios
+          : itemsSuplementos
+      }
       responsive={responsive}
       autoPlayInterval={2000}
       autoPlayDirection="ltr"
