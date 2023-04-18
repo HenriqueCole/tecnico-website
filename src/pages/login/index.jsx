@@ -112,35 +112,36 @@ export default function Login() {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Lembrar de mim"
               />
-              <Link to="/home">
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{
-                    mt: 3,
-                    mb: 20,
-                    backgroundColor: "#A9423F",
-                    "&:hover": { backgroundColor: "#A9423F" },
-                  }}
-                >
-                  Entrar
-                </Button>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{
-                    mt: 3,
-                    mb: 20,
-                    color: "#A9423F",
-                    backgroundColor: "transparent",
-                    "&:hover": { backgroundColor: "transparent" },
-                  }}
-                >
-                  Continuar sem cadastro
-                </Button>
-              </Link>
+              <Box>
+                <Link to="/home">
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{
+                      mt: 4,
+                      mb: 4,
+                      backgroundColor: "#A9423F",
+                      "&:hover": { backgroundColor: "#A9423F" },
+                    }}
+                  >
+                    Entrar
+                  </Button>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{
+                      color: "#A9423F",
+                      backgroundColor: "transparent",
+                      mb: 1,
+                      "&:hover": { backgroundColor: "transparent" },
+                    }}
+                  >
+                    Continuar sem cadastro
+                  </Button>
+                </Link>
+              </Box>
               <Grid container>
                 <Grid item xs>
                   <LinkMui

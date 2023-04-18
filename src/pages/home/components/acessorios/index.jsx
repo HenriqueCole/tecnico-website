@@ -20,7 +20,7 @@ export default function Acessorios() {
         <div className="container-title">
           <h1>HandGrip</h1>
         </div>
-        <Carousel />
+        <Carousel page={"acessorios"} />
       </div>
     </div>
   );

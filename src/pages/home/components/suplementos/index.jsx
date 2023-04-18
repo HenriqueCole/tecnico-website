@@ -20,7 +20,7 @@ export default function Suplementos() {
         <div className="container-title">
           <h1>Vitamina</h1>
         </div>
-        <Carousel />
+        <Carousel page={"suplementos"} />
       </div>
     </div>
   );
