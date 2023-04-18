@@ -13,6 +13,10 @@ import s2Img from "../../../../assets/suplemento_2.png";
 import v1Img from "../../../../assets/vitamina_1.png";
 import v2Img from "../../../../assets/vitamina_2.png";
 import v3Img from "../../../../assets/vitamina_3.png";
+import HandGripImg from "../../../../assets/handgrip.png";
+import verdeImg from "../../../../assets/camiseta_verde.png";
+import cinzaImg from "../../../../assets/camiseta_cinza.png";
+import pretoImg from "../../../../assets/camiseta_preta.png";
 
 export default function Carousel(props) {
   const handleDragStart = (e) => e.preventDefault();
@@ -77,49 +81,49 @@ export default function Carousel(props) {
   const itemsAcessorios = [
     <img
       className="imgProduct"
-      src={ProductImg}
+      src={HandGripImg}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={p1Img}
+      src={verdeImg}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={p2Img}
+      src={cinzaImg}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={p3Img}
+      src={pretoImg}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={p4Img}
+      src={HandGripImg}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={p5Img}
+      src={verdeImg}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={bpImg}
+      src={cinzaImg}
       onDragStart={handleDragStart}
       role="presentation"
     />,
     <img
       className="imgProduct"
-      src={s1Img}
+      src={pretoImg}
       onDragStart={handleDragStart}
       role="presentation"
     />,
