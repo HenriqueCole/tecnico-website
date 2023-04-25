@@ -208,11 +208,11 @@ export default function Home() {
               <p>{item.description}</p>
               <p>{`R$ ${item.price.toFixed(2)}`}</p>
             </div>
-            <div className="container_total_price">
-              <p>Total: {`R$ ${total.toFixed(2)}`}</p>
-            </div>
           </div>
         ))}
+        <div className="container_total_price">
+          <p>Total: {`R$ ${total.toFixed(2)}`}</p>
+        </div>
       </div>
     );
   }
