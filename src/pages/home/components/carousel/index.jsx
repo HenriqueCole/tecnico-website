@@ -8,7 +8,7 @@ import p3Img from "../../../../assets/proteina_3.png";
 import p4Img from "../../../../assets/proteina_4.png";
 import p5Img from "../../../../assets/proteina_5.png";
 import p6Img from "../../../../assets/proteina_6.png";
-import p6Img from "../../../../assets/proteina_7.png";
+import p7Img from "../../../../assets/proteina_7.png";
 import bpImg from "../../../../assets/barra_proteina.png";
 import s1Img from "../../../../assets/suplemento_1.png";
 import s2Img from "../../../../assets/suplemento_2.png";
