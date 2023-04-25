@@ -111,6 +111,12 @@ export default function Carousel(props) {
       onDragStart={handleDragStart}
       role="presentation"
     />,
+    <img
+      className="imgProduct"
+      src={p6Img}
+      onDragStart={handleDragStart}
+      role="presentation"
+    />,
   ];
 
   const itemsAcessorios = [
