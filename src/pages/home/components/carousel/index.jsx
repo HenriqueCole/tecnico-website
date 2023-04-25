@@ -15,17 +15,51 @@ import v2Img from "../../../../assets/vitamina_2.png";
 import v3Img from "../../../../assets/vitamina_3.png";
 import HandGripImg from "../../../../assets/handgrip.png";
 import verdeImg from "../../../../assets/camiseta_verde.png";
-import cinzaImg from "../../../../assets/camiseta_cinza.png";
-import pretoImg from "../../../../assets/camiseta_preta.png";
+import cinzaImg from "../../../../assets/camiseta_cinza.webp";
+import pretoImg from "../../../../assets/camiseta_preta.webp";
+
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+
+import { useState } from "react";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 4,
+};
 
 export default function Carousel(props) {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const handleDragStart = (e) => e.preventDefault();
+  const [productInfo, setProductInfo] = useState({
+    name: "",
+    description: "",
+    price: 0,
+    image: "",
+  });
 
   const responsive = {
     0: { items: 1 },
     568: { items: 2 },
     1024: { items: 3 },
   };
+
+  function addToLocalStorage() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(productInfo);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    handleClose();
+  }
 
   const itemsSuplementos = [
     <img
@@ -79,54 +113,78 @@ export default function Carousel(props) {
   ];
 
   const itemsAcessorios = [
-    <img
-      className="imgProduct"
-      src={HandGripImg}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={verdeImg}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={cinzaImg}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={pretoImg}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={HandGripImg}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={verdeImg}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={cinzaImg}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={pretoImg}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
+    <div
+      onClick={() => {
+        setProductInfo({
+          name: "Hand Grip",
+          description: "Hand Grip",
+          price: 15.0,
+          image: HandGripImg,
+        });
+        handleOpen();
+      }}
+    >
+      <img
+        className="imgProduct"
+        src={HandGripImg}
+        onDragStart={handleDragStart}
+        role="presentation"
+      />
+    </div>,
+    <div
+      onClick={() => {
+        setProductInfo({
+          name: "Camiseta Verde",
+          description: "Camiseta Verde",
+          price: 50.0,
+          image: verdeImg,
+        });
+        handleOpen();
+      }}
+    >
+      <img
+        className="imgProduct"
+        src={verdeImg}
+        onDragStart={handleDragStart}
+        role="presentation"
+      />
+    </div>,
+    <div
+      onClick={() => {
+        setProductInfo({
+          name: "Camiseta Cinza",
+          description: "Camiseta Cinza",
+          price: 50.0,
+          image: cinzaImg,
+        });
+        handleOpen();
+      }}
+    >
+      <img
+        className="imgProduct"
+        src={cinzaImg}
+        onDragStart={handleDragStart}
+        role="presentation"
+      />
+    </div>,
+    <div
+      onClick={() => {
+        setProductInfo({
+          name: "Camiseta Preta",
+          description: "Camiseta Preta",
+          price: 50.0,
+          image: pretoImg,
+        });
+        handleOpen();
+      }}
+    >
+      <img
+        className="imgProduct"
+        src={pretoImg}
+        onDragStart={handleDragStart}
+        role="presentation"
+      />
+    </div>,
   ];
 
   const Carousel = () => (
@@ -148,5 +206,45 @@ export default function Carousel(props) {
     />
   );
 
-  return <Carousel />;
+  return (
+    <>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <img
+            className="imgProduct"
+            src={productInfo.image}
+            onDragStart={handleDragStart}
+            role="presentation"
+          />
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {productInfo.name}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            {productInfo.description}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            R$ {productInfo.price}
+          </Typography>
+          <Button
+            variant="contained"
+            onClick={() => {
+              addToLocalStorage;
+            }}
+          >
+            Adicionar ao carrinho
+          </Button>
+
+          <Button variant="contained" onClick={handleClose}>
+            Fechar
+          </Button>
+        </Box>
+      </Modal>
+      <Carousel />;
+    </>
+  );
 }
