@@ -9,13 +9,13 @@
 }
 
 .alice-carousel {
-  background-color: #e3e3e3;
   border-radius: 2rem;
+  border: #a9423f solid 2px;
 }
 
 .imgProduct {
-  width: 20rem;
-  height: 30rem;
+  width: 19rem;
+  height: 22rem;
   object-fit: cover;
   margin: 0 auto;
   cursor: pointer;
@@ -187,4 +187,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.container_total_price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.container_total_price p {
+  color: #a9423f;
+  font-size: 1.5rem;
 }

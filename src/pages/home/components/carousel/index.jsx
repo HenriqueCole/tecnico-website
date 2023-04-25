@@ -59,58 +59,101 @@ export default function Carousel(props) {
     cart.push(productInfo);
     localStorage.setItem("cart", JSON.stringify(cart));
     handleClose();
+    alert("Produto adicionado com sucesso!");
     window.location.reload();
   }
 
   const itemsSuplementos = [
-    <img
-      className="imgProduct"
-      src={ProductImg}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={p1Img}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={p2Img}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={p3Img}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={p4Img}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={p5Img}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={bpImg}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
-    <img
-      className="imgProduct"
-      src={s1Img}
-      onDragStart={handleDragStart}
-      role="presentation"
-    />,
+    <div
+      onClick={() => {
+        setProductInfo({
+          name: "Proteína 1",
+          description: "Proteína 1",
+          price: 100.0,
+          image: p1Img,
+        });
+        handleOpen();
+      }}
+    >
+      <img
+        className="imgProduct"
+        src={p1Img}
+        onDragStart={handleDragStart}
+        role="presentation"
+      />
+    </div>,
+    <div
+      onClick={() => {
+        setProductInfo({
+          name: "Proteína 2",
+          description: "Proteína 2",
+          price: 100.0,
+          image: p2Img,
+        });
+        handleOpen();
+      }}
+    >
+      <img
+        className="imgProduct"
+        src={p2Img}
+        onDragStart={handleDragStart}
+        role="presentation"
+      />
+    </div>,
+    <div
+      onClick={() => {
+        setProductInfo({
+          name: "Proteína 3",
+          description: "Proteína 3",
+          price: 100.0,
+          image: p3Img,
+        });
+        handleOpen();
+      }}
+    >
+      <img
+        className="imgProduct"
+        src={p3Img}
+        onDragStart={handleDragStart}
+        role="presentation"
+      />
+    </div>,
+    <div
+      onClick={() => {
+        setProductInfo({
+          name: "Proteína 4",
+          description: "Proteína 4",
+          price: 100.0,
+          image: p4Img,
+        });
+        handleOpen();
+      }}
+    >
+      <img
+        className="imgProduct"
+        src={p4Img}
+        onDragStart={handleDragStart}
+        role="presentation"
+      />
+    </div>,
+    <div
+      onClick={() => {
+        setProductInfo({
+          name: "Proteína 5",
+          description: "Proteína 5",
+          price: 100.0,
+          image: p5Img,
+        });
+        handleOpen();
+      }}
+    >
+      <img
+        className="imgProduct"
+        src={p5Img}
+        onDragStart={handleDragStart}
+        role="presentation"
+      />
+    </div>,
   ];
 
   const itemsAcessorios = [

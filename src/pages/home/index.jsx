@@ -190,6 +190,12 @@ export default function Home() {
       }
     }, []);
 
+    let total = 0;
+
+    cartItems.forEach((item) => {
+      total += item.price;
+    });
+
     return (
       <div>
         {cartItems.map((item) => (
@@ -201,6 +207,9 @@ export default function Home() {
               <h1>{item.name}</h1>
               <p>{item.description}</p>
               <p>{`R$ ${item.price.toFixed(2)}`}</p>
+            </div>
+            <div className="container_total_price">
+              <p>Total: {`R$ ${total.toFixed(2)}`}</p>
             </div>
           </div>
         ))}
@@ -223,44 +232,41 @@ export default function Home() {
       <Divider />
       <div className="cart">
         {getItemsFromLocalStorage()}
-        {
-          //check if theres at least one item at localstorage
-          localStorage.getItem("cart") ? (
-            <div className="container-button-buy">
-              <button
-                className="button-delete"
-                onClick={() => {
-                  localStorage.removeItem("cart");
-                  window.location.reload();
+        {localStorage.getItem("cart") ? (
+          <div className="container-button-buy">
+            <button
+              className="button-delete"
+              onClick={() => {
+                localStorage.removeItem("cart");
+                window.location.reload();
+              }}
+            >
+              Limpar carrinho
+            </button>
+            <button
+              className="button-buy"
+              onClick={() => {
+                localStorage.removeItem("cart");
+                window.location.reload();
+                alert("Compra realizada com sucesso!");
+              }}
+            >
+              Finalizar compra
+            </button>
+          </div>
+        ) : (
+          <div className="container_empty">
+            <div className="container_icon">
+              <RemoveShoppingCartRoundedIcon
+                sx={{
+                  fontSize: 100,
+                  color: "#A9423F",
                 }}
-              >
-                Limpar carrinho
-              </button>
-              <button
-                className="button-buy"
-                onClick={() => {
-                  localStorage.removeItem("cart");
-                  window.location.reload();
-                  alert("Compra realizada com sucesso!");
-                }}
-              >
-                Finalizar compra
-              </button>
+              />
             </div>
-          ) : (
-            <div className="container_empty">
-              <div className="container_icon">
-                <RemoveShoppingCartRoundedIcon
-                  sx={{
-                    fontSize: 100,
-                    color: "#A9423F",
-                  }}
-                />
-              </div>
-              <h1>Seu carrinho está vazio</h1>
-            </div>
-          )
-        }
+            <h1>Seu carrinho está vazio</h1>
+          </div>
+        )}
       </div>
     </Box>
   );
