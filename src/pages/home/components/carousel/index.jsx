@@ -59,6 +59,7 @@ export default function Carousel(props) {
     cart.push(productInfo);
     localStorage.setItem("cart", JSON.stringify(cart));
     handleClose();
+    window.location.reload();
   }
 
   const itemsSuplementos = [
@@ -215,12 +216,14 @@ export default function Carousel(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <img
-            className="imgProduct"
-            src={productInfo.image}
-            onDragStart={handleDragStart}
-            role="presentation"
-          />
+          <div className="container_img">
+            <img
+              className="productImg"
+              src={productInfo.image}
+              onDragStart={handleDragStart}
+              role="presentation"
+            />
+          </div>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {productInfo.name}
           </Typography>
@@ -230,18 +233,33 @@ export default function Carousel(props) {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             R$ {productInfo.price}
           </Typography>
-          <Button
-            variant="contained"
-            onClick={() => {
-              addToLocalStorage;
-            }}
-          >
-            Adicionar ao carrinho
-          </Button>
+          <div className="container_buttons">
+            <Button
+              variant="contained"
+              onClick={handleClose}
+              sx={{
+                backgroundColor: "#A9423F",
+                "&:hover": {
+                  backgroundColor: "#A9423F",
+                },
+              }}
+            >
+              Fechar
+            </Button>
+            <Button
+              variant="contained"
+              onClick={addToLocalStorage}
+              sx={{
+                backgroundColor: "#A9423F",
 
-          <Button variant="contained" onClick={handleClose}>
-            Fechar
-          </Button>
+                "&:hover": {
+                  backgroundColor: "#A9423F",
+                },
+              }}
+            >
+              Adicionar ao carrinho
+            </Button>
+          </div>
         </Box>
       </Modal>
       <Carousel />;

@@ -15,6 +15,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ScienceIcon from "@mui/icons-material/Science";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import RemoveShoppingCartRoundedIcon from "@mui/icons-material/RemoveShoppingCartRounded";
 
 //Header
 import AppBar from "@mui/material/AppBar";
@@ -179,6 +180,34 @@ export default function Home() {
     </Box>
   );
 
+  function getItemsFromLocalStorage() {
+    const [cartItems, setCartItems] = React.useState([]);
+
+    React.useEffect(() => {
+      const cart = JSON.parse(localStorage.getItem("cart"));
+      if (cart) {
+        setCartItems(cart);
+      }
+    }, []);
+
+    return (
+      <div>
+        {cartItems.map((item) => (
+          <div key={item.name} className="cart-item">
+            <div className="cart-item-img">
+              <img src={item.image} alt={item.name} />
+            </div>
+            <div className="cart-item-info">
+              <h1>{item.name}</h1>
+              <p>{item.description}</p>
+              <p>{`R$ ${item.price.toFixed(2)}`}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   const listCart = (anchor) => (
     <Box
       sx={{
@@ -193,29 +222,45 @@ export default function Home() {
       </div>
       <Divider />
       <div className="cart">
-        <div className="cart-item">
-          <div className="cart-item-img">
-            <img src={product} alt="product" />
-          </div>
-          <div className="cart-item-info">
-            <h1>Suplemento 1</h1>
-            <p>Descrição do suplemento 1</p>
-            <p>R$ 100,00</p>
-          </div>
-        </div>
-        <div className="cart-item">
-          <div className="cart-item-img">
-            <img src={product} alt="product" />
-          </div>
-          <div className="cart-item-info">
-            <h1>Suplemento 2</h1>
-            <p>Descrição do suplemento 2</p>
-            <p>R$ 100,00</p>
-          </div>
-        </div>
-        <div className="container-button-buy">
-          <button className="button-buy">Finalizar compra</button>
-        </div>
+        {getItemsFromLocalStorage()}
+        {
+          //check if theres at least one item at localstorage
+          localStorage.getItem("cart") ? (
+            <div className="container-button-buy">
+              <button
+                className="button-delete"
+                onClick={() => {
+                  localStorage.removeItem("cart");
+                  window.location.reload();
+                }}
+              >
+                Limpar carrinho
+              </button>
+              <button
+                className="button-buy"
+                onClick={() => {
+                  localStorage.removeItem("cart");
+                  window.location.reload();
+                  alert("Compra realizada com sucesso!");
+                }}
+              >
+                Finalizar compra
+              </button>
+            </div>
+          ) : (
+            <div className="container_empty">
+              <div className="container_icon">
+                <RemoveShoppingCartRoundedIcon
+                  sx={{
+                    fontSize: 100,
+                    color: "#A9423F",
+                  }}
+                />
+              </div>
+              <h1>Seu carrinho está vazio</h1>
+            </div>
+          )
+        }
       </div>
     </Box>
   );
